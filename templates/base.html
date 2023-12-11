@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/custom-css.css' %}">
+    <meta name="description" content="{% block metadescription %}{% endblock %}">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/icon type">
+</head>
+<body>
+<div class="container-fluid">
+{% include 'nav.html' %}
+</div>
+<div class="container-fluid mt-3 pr-4">
+{% block content %}
+{% endblock %}
+</div>
+<div id="wrap">
+  <div id="main"></div>
+</div>
+<div id="footer">
+{% include 'footer.html' %}
+</div>
+
+<script src="{% static 'js/jquery-3.5.1.slim.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script>
+    $(document).ready(function(){
+    $(".hover-card").hover(
+        function() {
+            // Mouse over - add the hover effect
+            $(this).css("transform", "scale(1.04)");
+        },
+        function() {
+            // Mouse out - remove the hover effect
+            $(this).css("transform", "scale(1)");
+        });
+    });
+</script>
+{% block scripts %}
+{% endblock %}
+</body>
+</html>

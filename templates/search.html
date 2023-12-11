@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+  {{ product.description|truncatewords:155}}
+{% endblock %}
+
+{% block title %}
+    Ecommerce-search
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h5>Showing search results for "{{query}}" </h5>
+        </div>
+    </div>
+</div>
+ <div class="border shadow container-fluid my-2">
+        <div class="row">
+            {% for i in products %}
+            <div class="col-md-6 col-lg-4 col-xl-2 mt-3">
+                <div class="shadow items" style="background-color:#F8F8FF">
+                    <a href="{{i.get_url}}"> <img  class="rounded img-fluid" src="{{i.image.url}}" alt="{{i.name}}" style="height:300px;"></a>
+                    <div class="details mx-3 my-2">
+                        <h6>{{i.name}}</h6>
+                        <p>₹{{i.price}}</p>
+                    </div>
+                </div>
+
+            </div>
+            {% empty %}
+            <div class="row mx-auto">
+                <div class="text-center">
+                    <h5>No results found</h5>
+                </div>
+            </div>
+{% endfor %}
+        </div>
+ </div>
+{% endblock %}
